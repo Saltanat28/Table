@@ -1,0 +1,138 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~FIRST TABLE
+CREATE TABLE sport(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50)
+);
+
+CREATE TABLE student(
+    id SERIAL PRIMARY KEY ,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    age INT,
+    email VARCHAR(70) UNIQUE,
+    sport_id INT REFERENCES sport (id)
+);
+
+select * from sport;
+select * from student;
+
+INSERT INTO sport(name)
+VALUES ('Basketbal'),
+        ('Volleybal'),
+        ('Foodbal');
+
+INSERT INTO student(first_name, last_name, age, email, sport_id)
+VALUES ('Saltanat','Nematilla kyzy',20,'s@email.com',1),
+       ('Alibek','Akylbek uulu',20,'a@email.com',3),
+       ('Nuriza','Muratova',18,'n@email.com',2)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~SECOND TABLE
+
+
+CREATE  TABLE food(
+    id SERIAL,
+    name VARCHAR(50)
+);
+
+CREATE  TABLE orderFood(
+    id SERIAL,
+    gram INT,
+    price INT,
+    food_id INTEGER REFERENCES food(id)
+);
+
+INSERT INTO food(name)
+VALUES ('PLOV'),
+       ('BESH-BARMAK'),
+       ('SOUP'),
+       ('MANTY'),
+       ('FISH'),
+       ('FRI');
+
+
+INSERT INTO orderFood( gram, price,food_id)
+VALUES(300, 150, 1),
+      (500, 250, 2),
+      (450, 150, 3),
+      (600, 200, 4);
+
+
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~THIRD TABLE
+
+ CREATE TABLE city(
+     id SERIAL PRIMARY KEY ,
+     name VARCHAR(50)
+ );
+
+ CREATE TABLE country(
+     id SERIAL,
+     name VARCHAR(50),
+     location VARCHAR(50),
+     city_id INT REFERENCES city(id)
+ );
+
+ INSERT INTO city(name)
+ VALUES('BISHKEK'),
+     ('Moscov'),
+     ('Chicago',
+     ('Berlin'),
+     ('Washington'));
+
+
+ INSERT INTO country(name, location, city_id)
+ VALUES('Kyrgyzstan','Asia',1),
+       ('USA','Amerika',5),
+       ('Germany','Europa',4);
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~FOURTH TABLE
+
+CREATE TABLE plant(
+    id SERIAL PRIMARY KEY ,
+    name VARCHAR(50)
+);
+
+CREATE TABLE plant2(
+    id SERIAL,
+    name VARCHAR(50),
+    volume VARCHAR(50),
+    location VARCHAR(50),
+    plant_id INT REFERENCES plant(id)
+);
+
+INSERT INTO plant(name)
+VALUES ('TREES'),
+       ('FRUITS'),
+       ('VEGETABLES');
+
+INSERT INTO plant2(name, volume, location)
+VALUES ('Christmas tree','big','Asia'),
+       ('Melon','small','Asia'),
+       ('Carrot','small', 'Everywhere');
+
+~~~~~~~~~~~~~~~~~FIFTH TABLE
+CREATE TABLE transport(
+    id SERIAL PRIMARY KEY ,
+    name VARCHAR(50)
+);
+
+CREATE TABLE passenger(
+    id SERIAL,
+    name VARCHAR(50) NOT NULL ,
+    last_name VARCHAR(50),
+    email  VARCHAR(50) UNIQUE ,
+    address VARCHAR(50),
+    transport_id INT REFERENCES transport(id)
+);
+
+INSERT INTO transport(name)
+VALUES ('PLAN'),
+       ('SHIP'),
+       ('ROCKET'),
+       ('BUS');
+
+INSERT INTO passenger(name, last_name, email, address, transport_id)
+VALUES('Altynbek','Shakirov','a@email.com','Bishkek',1) ,
+      ('Yryskeldi','Alymbekov','y@email.com','Osh',2);

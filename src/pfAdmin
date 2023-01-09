@@ -1,0 +1,137 @@
+CREATE TABLE smartPhone(
+	id SERIAL ,
+	name VARCHAR(50)
+);
+
+
+CREATE TABLE person(
+id SERIAL
+first_name VARCHAR(50),
+last_name VARCHAR(50),
+country VARCHAR(50),
+phoneNumber INT
+smartPhone_id INTEGER REFERENCES smartPhone(id)
+);
+
+select * from smatrPhone;
+select * from person;
+
+INSERT INTO smartPhone(name)
+VALUES('iPhone'),
+		('SAMSUNGE'),
+		('HUAWEI');
+
+
+
+INSERT INTO person(name, last_name, country, phoneNumber, smatrPhone_id)
+VALUES('Saltanat','Nematilla kyzy','Kyrgyzstan', 111,1),
+		('Alibek', 'Akylbek uulu','USA',222,3);
+
+
+--%%%%%%%%%%%%%%%% SECOND TABLE  %%%%%%%%%%%%%%%%%%%:
+
+CREATE TABLE category(
+id SERIAL,
+name VARCHAR(50));
+
+CREATE TABLE product(
+id SERIAL,
+name VARCHAR(50),
+weight INT,
+certificate VARCHAR(50),
+category_id INTEGER REFERENCES category(id)
+);
+
+INSERT INTO category(name)
+VALUES('Dry product'),
+		('Liwude product');
+
+INSERT INTO product(name, weight, certificate, category_id)
+VALUES('CAKE', 1, 'Halal'),
+('Ice-creame',1, 'Halal'),
+('Milk',2 , 'Halal');
+
+--%%%%%%%%%%%%%%%%%%%% THIRD TABLE %%%%%%%%%%%%%%%%%:
+
+CREATE TABLE auto(
+id SERIAL,
+name VARCHAR
+);
+
+CREATE TABLE person(
+id SERIAL,
+first_name VARCHAR(50),
+last_name VARCAR(50),
+country VARCHAR(50)
+age INT,
+gender VARCHAR(50),
+auto_id INTEGER
+);
+
+INSERT INTO auto(name)
+VALUES('BMW'),
+('Toyota'),
+('Jaguar');
+
+INSERT INTO person(first_name, last_name,country,age,gender, auto_id)
+VALUES('Zarina', 'Sidikova','Korea',18,'Female'),
+('Kanikey','Ascaarbekova','japonya',16,'Female'),
+('Alibek ','Akylbek uulu',20,'Poland','Male');
+
+
+%%%%%%%%%%%%%%%% FOURTH TABLE %%%%%%%%%%%%%%%%%%
+
+CREATE TABLE book(
+id SERIAL,
+name VARCHAR(50)
+);
+
+CREATE TABLE kids(
+id SERIAL,
+name VARCHAR(50),
+last_name VARCHAR(50),
+age INT,
+school VARCHAR(50) UNIQUE,
+class INT NOT NULL,
+book_id INTEGER REFERENCES book(id)
+);
+
+INSERT INTO book(name)
+VALUES('Math'),
+('Painting'),
+('Geography');
+
+INSERT INTO kids(name, last_name, age, school, class, book_id)
+VALUES('Aynazik','Amangekdieva', 17,'campus', 2, 1),
+('Ayperi','Ibraimova', 19, 'campus1', 3, 2 ),
+('Altinbek','Shakirov', 16, 'campus2', 4, 3)
+
+%%%%%%%%%%%%%% FIFTH TABLE %%%%%%%%%%%%%%%%%
+
+CREATE TABLE book(
+id SERIAL,
+name VARCHAR(50)
+);
+
+CREATE TABLE kids(
+id SERIAL,
+name VARCHAR(50),
+last_name VARCHAR(50),
+age INT,
+school VARCHAR(50) ,
+class INT NOT NULL,
+book_id INTEGER REFERENCES book(id)
+);
+
+select * from book;
+select * from kids;
+
+INSERT INTO book(name)
+VALUES('Math'),
+('Painting'),
+('Geography');
+
+INSERT INTO kids(name, last_name, age, school, class, book_id)
+VALUES('Aynazik','Amangekdieva', 17,'campus', 2, 1),
+('Ayperi','Ibraimova', 19, 'campus1', 3, 2 ),
+('Altinbek','Shakirov', 16, 'campus2', 4, 3);
